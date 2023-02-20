@@ -5,12 +5,13 @@ import {Feather, Ionicons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
 import {useDispatch, useSelector} from "react-redux";
 import {productsSlice} from "../../store/productsSlide";
+import {selectNumberOfItems} from "../../store/cartSlice";
 
 const ProductScreen = () => {
   const navigation = useNavigation();
   const products = useSelector(state => state.products.products);
   const dispatch = useDispatch();
-
+  const  numberOfItems = useSelector(selectNumberOfItems);
   return (
     <View className="flex flex-col">
       <View className="flex flex-row items-center  pt-16 justify-between  px-3 mb-2">
@@ -22,7 +23,7 @@ const ProductScreen = () => {
         </View>
         <TouchableOpacity onPress={() => navigation.navigate('Cart')} className="flex flex-row items-center space-x-1" activeOpacity={0.7}>
           <Feather name="shopping-bag" size={21} color="black" />
-          <Text className="text-[14px] font-[500]">1</Text>
+          <Text className="text-[14px] font-[500]">{numberOfItems}</Text>
         </TouchableOpacity>
       </View>
       <FlatList

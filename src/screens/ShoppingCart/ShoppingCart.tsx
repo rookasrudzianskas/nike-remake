@@ -5,6 +5,7 @@ import CartListItem from "../../components/CartListItem";
 import {Ionicons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
 import {useSelector} from "react-redux";
+import {selectSubtotal} from "../../store/cartSlice";
 
 const ShoppingCart = () => {
   const navigation = useNavigation();
@@ -22,22 +23,25 @@ const ShoppingCart = () => {
             className=""
             data={cartItems}
             renderItem={({ item }) => <CartListItem cartItem={item} />}
-            ListFooterComponent={() => (
-              <View style={styles.totalsContainer}>
-                <View style={styles.row}>
-                  <Text style={styles.text}>Subtotal</Text>
-                  <Text style={styles.text}>410,00 US$</Text>
+            ListFooterComponent={() => {
+              const subtotal = useSelector(selectSubtotal);
+              return (
+                <View style={styles.totalsContainer}>
+                  <View style={styles.row}>
+                    <Text style={styles.text}>Subtotal</Text>
+                    <Text style={styles.text}>{subtotal} US$</Text>
+                  </View>
+                  <View style={styles.row}>
+                    <Text style={styles.text}>Delivery</Text>
+                    <Text style={styles.text}>16,50 US$</Text>
+                  </View>
+                  <View style={styles.row}>
+                    <Text style={styles.textBold}>Total</Text>
+                    <Text style={styles.textBold}>426,50 US$</Text>
+                  </View>
                 </View>
-                <View style={styles.row}>
-                  <Text style={styles.text}>Delivery</Text>
-                  <Text style={styles.text}>16,50 US$</Text>
-                </View>
-                <View style={styles.row}>
-                  <Text style={styles.textBold}>Total</Text>
-                  <Text style={styles.textBold}>426,50 US$</Text>
-                </View>
-              </View>
-            )}
+              )
+            }}
           />
       ) : (
         <View className="flex-1 items-center justify-center">
