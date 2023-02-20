@@ -3,14 +3,18 @@ import React from 'react';
 import {Text, View, Image, FlatList, useWindowDimensions, ScrollView, TouchableOpacity} from 'react-native';
 import RoundedButton from "../../components/RoundedButton/RoundedButton";
 import {useNavigation} from "@react-navigation/native";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {cartSlice} from "../../store/cartSlice";
 
 const ProductDetailsScreen = () => {
   const product = useSelector(state => state.products.selectedProduct);
   const {width} = useWindowDimensions(width);
   const navigation = useNavigation();
+
+  const dispatch = useDispatch();
   const addToCart = () => {
-    console.warn('Added to cart');
+    dispatch(cartSlice.actions.addCartItem({product}))
+    navigation.navigate('Cart');
   }
 
   return (
