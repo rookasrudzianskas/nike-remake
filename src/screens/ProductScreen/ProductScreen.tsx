@@ -1,12 +1,14 @@
 //@ts-nocheck
 import React from 'react';
 import {Text, View, Image, FlatList, TouchableOpacity} from 'react-native';
-import products from "../../data/products";
 import {Feather, Ionicons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
+import {useSelector} from "react-redux";
 
 const ProductScreen = () => {
   const navigation = useNavigation();
+  const products = useSelector(state => state.products.products);
+
   return (
     <View className="flex flex-col">
       <View className="flex flex-row items-center  pt-16 justify-between  px-3 mb-2">
