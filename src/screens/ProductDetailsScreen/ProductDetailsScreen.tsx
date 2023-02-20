@@ -4,9 +4,10 @@ import {Text, View, StyleSheet, Image, FlatList, useWindowDimensions, ScrollView
 import products from "../../data/products";
 import RoundedButton from "../../components/RoundedButton/RoundedButton";
 import {useNavigation} from "@react-navigation/native";
+import {useSelector} from "react-redux";
 
 const ProductDetailsScreen = () => {
-  const product = products[0];
+  const product = useSelector(state => state.products.selectedProduct);
   const {width} = useWindowDimensions(width);
   const navigation = useNavigation();
   const addToCart = () => {
