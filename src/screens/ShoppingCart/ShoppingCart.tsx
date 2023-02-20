@@ -5,7 +5,7 @@ import CartListItem from "../../components/CartListItem";
 import {Ionicons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
 import {useSelector} from "react-redux";
-import {selectDeliveryPrice, selectSubtotal} from "../../store/cartSlice";
+import {selectDeliveryPrice, selectSubtotal, selectTotal} from "../../store/cartSlice";
 
 const ShoppingCart = () => {
   const navigation = useNavigation();
@@ -25,7 +25,8 @@ const ShoppingCart = () => {
             renderItem={({ item }) => <CartListItem cartItem={item} />}
             ListFooterComponent={() => {
               const subtotal = useSelector(selectSubtotal);
-              const deliveryFee = useSelector(selectDeliveryPrice)
+              const deliveryFee = useSelector(selectDeliveryPrice);
+              const total = useSelector(selectTotal);
               return (
                 <View style={styles.totalsContainer}>
                   <View style={styles.row}>
@@ -38,7 +39,7 @@ const ShoppingCart = () => {
                   </View>
                   <View style={styles.row}>
                     <Text style={styles.textBold}>Total</Text>
-                    <Text style={styles.textBold}>426,50 US$</Text>
+                    <Text style={styles.textBold}>{total} US$</Text>
                   </View>
                 </View>
               )

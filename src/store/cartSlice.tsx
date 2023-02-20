@@ -50,8 +50,8 @@ export const selectDeliveryPrice = createSelector(
     subtotal > state.freeDeliveryFrom ? 0 : state.deliveryPrice
 );
 
-// export const selectTotal = createSelector(
-//   selectSubtotal,
-//   selectDeliveryPrice,
-//   (subtotal, delivery) => subtotal + delivery
-// );
+export const selectTotal = createSelector(
+  selectSubtotal,
+  selectDeliveryPrice,
+  (subtotal, delivery) => subtotal + delivery
+);
