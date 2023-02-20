@@ -4,13 +4,12 @@ import React from "react";
 import ProductScreen from "./src/screens/ProductScreen";
 import ProductDetailsScreen from "./src/screens/ProductDetailsScreen";
 import ShoppingCart from "./src/screens/ShoppingCart";
+import Navigation from "./src/navigation/navigation";
 
 export default function App() {
   return (
     <View className="flex-1">
-      {/*<ProductScreen />*/}
-      {/*<ProductDetailsScreen/>*/}
-      <ShoppingCart />
+      <Navigation />
       <StatusBar style="auto" />
     </View>
   );

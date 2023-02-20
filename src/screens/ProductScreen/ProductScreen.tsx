@@ -3,9 +3,11 @@ import React from 'react';
 import {Text, View, StyleSheet, Image, FlatList, TouchableOpacity} from 'react-native';
 import products from "../../data/products";
 import {Ionicons} from "@expo/vector-icons";
+import {useNavigation} from "@react-navigation/native";
 // import products from "../../data/products";
 
 const ProductScreen = () => {
+  const navigation = useNavigation();
   return (
     <View className="flex flex-col">
       <View className="flex flex-row pt-16 items-center px-3 space-x-2 mb-2">
@@ -19,7 +21,7 @@ const ProductScreen = () => {
         showsVerticalScrollIndicator={false}
         numColumns={2}
         renderItem={({item}) => (
-          <TouchableOpacity activeOpacity={0.7} style={{ width: "50%", padding: 1 }}>
+          <TouchableOpacity onPress={() => navigation.navigate('Product Details')} activeOpacity={0.7} style={{ width: "50%", padding: 1 }}>
             <Image source={{ uri: item.image }} style={{width: "100%", aspectRatio: 1}} />
           </TouchableOpacity>
         )}

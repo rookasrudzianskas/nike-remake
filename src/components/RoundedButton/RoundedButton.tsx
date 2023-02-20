@@ -11,7 +11,7 @@ type Props = {
 
 const RoundedButton = ({icon, action}: Props) => {
   return (
-    <TouchableOpacity activeOpacity={0.7} className="w-9 h-9 flex items-center justify-center bg-gray-900/90 mx-1 rounded-full">
+    <TouchableOpacity onPress={action} activeOpacity={0.7} className="w-9 h-9 flex items-center justify-center bg-gray-900/90 mx-1 rounded-full">
       {icon === 'share' ? (
         <Ionicons name="share-outline" size={21} color="white" />
       ) : (
