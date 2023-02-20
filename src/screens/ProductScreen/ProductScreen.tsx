@@ -2,7 +2,7 @@
 import React from 'react';
 import {Text, View, StyleSheet, Image, FlatList, TouchableOpacity} from 'react-native';
 import products from "../../data/products";
-import {Ionicons} from "@expo/vector-icons";
+import {Feather, Ionicons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
 // import products from "../../data/products";
 
@@ -10,11 +10,17 @@ const ProductScreen = () => {
   const navigation = useNavigation();
   return (
     <View className="flex flex-col">
-      <View className="flex flex-row pt-16 items-center px-3 space-x-2 mb-2">
-        <TouchableOpacity activeOpacity={0.7}>
-          <Ionicons name="ios-filter-outline" size={24} color="black" />
+      <View className="flex flex-row items-center  pt-16 justify-between  px-3 mb-2">
+        <View className="flex flex-row items-center space-x-2">
+          <TouchableOpacity activeOpacity={0.7}>
+            <Ionicons name="ios-filter-outline" size={24} color="black" />
+          </TouchableOpacity>
+          <Text className="text-gray-500 font-[500]">Filter by size</Text>
+        </View>
+        <TouchableOpacity onPress={() => navigation.navigate('Cart')} className="flex flex-row items-center space-x-1" activeOpacity={0.7}>
+          <Feather name="shopping-bag" size={21} color="black" />
+          <Text className="text-[14px] font-[500]">1</Text>
         </TouchableOpacity>
-        <Text className="text-gray-500 font-[500]">Filter by size</Text>
       </View>
       <FlatList
         data={products}

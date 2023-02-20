@@ -3,13 +3,19 @@ import React from 'react';
 import {Text, View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import cart from "../../data/cart";
 import CartListItem from "../../components/CartListItem";
+import {Ionicons} from "@expo/vector-icons";
+import {useNavigation} from "@react-navigation/native";
 
 const ShoppingCart = () => {
+  const navigation = useNavigation();
   const addToCart = () => {
 
   }
   return (
     <View className="pt-16 flex flex-col flex-1">
+      <TouchableOpacity onPress={() => navigation.goBack()} activeOpacity={0.7} className="my-1 px-5">
+        <Ionicons name="arrow-back-circle" size={27} color="black" />
+      </TouchableOpacity>
       <FlatList
         className=""
         data={cart}

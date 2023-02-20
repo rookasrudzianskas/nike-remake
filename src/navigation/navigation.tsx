@@ -10,7 +10,10 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{
-        headerShown: false
+        headerShown: false,
+        contentStyle: {
+          backgroundColor: 'white'
+        }
       }}>
         <Stack.Screen name="Products" component={ProductScreen} />
         <Stack.Screen name="Product Details" options={{ presentation: 'modal' }} component={ProductDetailsScreen} />
