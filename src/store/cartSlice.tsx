@@ -43,13 +43,13 @@ export const selectSubtotal = (state) =>
 
 export const selectSelf = (state) => state.cart;
 
-// export const selectDeliveryPrice = createSelector(
-//   selectSelf,
-//   selectSubtotal,
-//   (state, subtotal) =>
-//     subtotal > state.freeDeliveryFrom ? 0 : state.deliveryPrice
-// );
-//
+export const selectDeliveryPrice = createSelector(
+  selectSelf,
+  selectSubtotal,
+  (state, subtotal) =>
+    subtotal > state.freeDeliveryFrom ? 0 : state.deliveryPrice
+);
+
 // export const selectTotal = createSelector(
 //   selectSubtotal,
 //   selectDeliveryPrice,
