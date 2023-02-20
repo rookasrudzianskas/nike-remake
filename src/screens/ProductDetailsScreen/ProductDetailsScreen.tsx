@@ -1,7 +1,6 @@
 //@ts-nocheck
 import React from 'react';
-import {Text, View, StyleSheet, Image, FlatList, useWindowDimensions, ScrollView, TouchableOpacity} from 'react-native';
-import products from "../../data/products";
+import {Text, View, Image, FlatList, useWindowDimensions, ScrollView, TouchableOpacity} from 'react-native';
 import RoundedButton from "../../components/RoundedButton/RoundedButton";
 import {useNavigation} from "@react-navigation/native";
 import {useSelector} from "react-redux";
