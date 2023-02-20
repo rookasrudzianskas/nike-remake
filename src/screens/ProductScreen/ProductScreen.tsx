@@ -3,11 +3,13 @@ import React from 'react';
 import {Text, View, Image, FlatList, TouchableOpacity} from 'react-native';
 import {Feather, Ionicons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {productsSlice} from "../../store/productsSlide";
 
 const ProductScreen = () => {
   const navigation = useNavigation();
   const products = useSelector(state => state.products.products);
+  const dispatch = useDispatch();
 
   return (
     <View className="flex flex-col">
@@ -28,7 +30,11 @@ const ProductScreen = () => {
         showsVerticalScrollIndicator={false}
         numColumns={2}
         renderItem={({item}) => (
-          <TouchableOpacity onPress={() => navigation.navigate('Product Details')} activeOpacity={0.7} style={{ width: "50%", padding: 1 }}>
+          <TouchableOpacity onPress={() => {
+            // update the selected product
+            dispatch(productsSlice.actions.setSelectedProduct(item.id));
+            navigation.navigate('Product Details');
+          }} activeOpacity={0.7} style={{ width: "50%", padding: 1 }}>
             <Image source={{ uri: item.image }} style={{width: "100%", aspectRatio: 1}} />
           </TouchableOpacity>
         )}

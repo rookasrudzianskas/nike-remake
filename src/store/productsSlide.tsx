@@ -10,6 +10,8 @@ export const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-
+    setSelectedProduct: (state, action) => {
+      console.log('Action >>>>', action)
+    }
   }
 });

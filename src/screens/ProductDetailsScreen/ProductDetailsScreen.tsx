@@ -31,7 +31,7 @@ const ProductDetailsScreen = () => {
           <Text className="text-gray-800 font-[400] mt-3 text-[15px]">{product.description}</Text>
         </View>
       </ScrollView>
-      <View className="absolute top-[25px] right-7 flex flex-row items-center">
+      <View className="absolute top-[25px] right-3 flex flex-row items-center">
         <RoundedButton icon={'share'} />
         <RoundedButton icon={'somethingElse'} action={() => navigation.goBack()} />
       </View>
