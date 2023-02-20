@@ -1,6 +1,6 @@
 //@ts-nocheck
 import React from 'react';
-import {Text, View, StyleSheet, Image, FlatList, TouchableOpacity} from 'react-native';
+import {Text, View, Image, FlatList, TouchableOpacity} from 'react-native';
 import products from "../../data/products";
 import {Feather, Ionicons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
