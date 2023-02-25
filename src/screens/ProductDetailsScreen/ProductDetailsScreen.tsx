@@ -1,22 +1,35 @@
 //@ts-nocheck
 import React from 'react';
-import {Text, View, Image, FlatList, useWindowDimensions, ScrollView, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  FlatList,
+  useWindowDimensions,
+  ScrollView,
+  TouchableOpacity,
+  ActivityIndicator
+} from 'react-native';
 import RoundedButton from "../../components/RoundedButton/RoundedButton";
 import {useNavigation} from "@react-navigation/native";
 import {useDispatch, useSelector} from "react-redux";
 import {cartSlice} from "../../store/cartSlice";
+import {useGetProductQuery} from "../../store/apiSlice";
 
-const ProductDetailsScreen = () => {
-  const product = useSelector(state => state.products.selectedProduct);
+const ProductDetailsScreen = ({route}) => {
   const {width} = useWindowDimensions(width);
+  const id = route.params.id;
   const navigation = useNavigation();
-
+  const { data, isLoading, error } = useGetProductQuery(id);
   const dispatch = useDispatch();
   const addToCart = () => {
     dispatch(cartSlice.actions.addCartItem({product}))
     navigation.navigate('Cart');
   }
 
+  if(isLoading) {return (<View className="h-screen w-screen flex items-center justify-center"><ActivityIndicator /></View>)}
+  if (error) { return (<View className="h-screen w-screen items-center justify-center"><Text className="text-red-500 font-[500] text-lg">{error}</Text></View>)}
+  const product = data.data
   return (
     <View>
       <ScrollView className="pb-10" contentContainerStyle={{paddingBottom: 200}} showsVerticalScrollIndicator={false}>
