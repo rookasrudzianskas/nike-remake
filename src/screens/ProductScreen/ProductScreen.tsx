@@ -21,6 +21,15 @@ const ProductScreen = () => {
       </View>
     )
   }
+
+  if (error) {
+    return (
+      <View className="h-screen w-screen items-center justify-center">
+        <Text className="text-red-500 font-[500] text-lg">{error}</Text>
+      </View>
+    );
+  }
+
   const products = data.data;
 
   return (
