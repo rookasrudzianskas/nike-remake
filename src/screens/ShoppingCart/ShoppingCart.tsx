@@ -6,13 +6,16 @@ import {Ionicons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
 import {useSelector} from "react-redux";
 import {selectDeliveryPrice, selectSubtotal, selectTotal} from "../../store/cartSlice";
+import {useCreateOrderMutation} from "../../store/apiSlice";
 
 const ShoppingCart = () => {
   const navigation = useNavigation();
   const cartItems = useSelector((state) => state.cart.items);
+  const [createOrder, {data, error, isLoading}] = useCreateOrderMutation();
   const addToCart = () => {
 
   }
+
   return (
     <View className="pt-16 flex flex-col flex-1">
       <TouchableOpacity onPress={() => navigation.goBack()} activeOpacity={0.7} className="my-1 px-5">
