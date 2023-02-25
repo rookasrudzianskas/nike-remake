@@ -37,8 +37,8 @@ const ProductScreen = () => {
         renderItem={({item}) => (
           <TouchableOpacity onPress={() => {
             // update the selected product
-            dispatch(productsSlice.actions.setSelectedProduct(item.id));
-            navigation.navigate('Product Details');
+            // dispatch(productsSlice.actions.setSelectedProduct(item.id));
+            navigation.navigate('Product Details', { id: item._id });
           }} activeOpacity={0.7} style={{ width: "50%", padding: 1 }}>
             <Image source={{ uri: item.image }} style={{width: "100%", aspectRatio: 1}} />
           </TouchableOpacity>
