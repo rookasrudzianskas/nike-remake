@@ -20,7 +20,7 @@ const ProductScreen = () => {
     <View className="flex flex-col">
       <View className="flex flex-row items-center  pt-16 justify-between  px-3 mb-2">
         <View className="flex flex-row items-center space-x-2">
-          <TouchableOpacity activeOpacity={0.7}>
+          <TouchableOpacity onPress={() => navigation.navigate('TrackOrderScreen')} activeOpacity={0.7}>
             <Ionicons name="ios-filter-outline" size={24} color="black" />
           </TouchableOpacity>
           <Text className="text-gray-500 font-[500]">Filter by size</Text>

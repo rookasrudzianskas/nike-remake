@@ -11,7 +11,7 @@ import {useCreateOrderMutation} from "../../store/apiSlice";
 const ShoppingCart = () => {
   const navigation = useNavigation();
   const cartItems = useSelector((state) => state.cart.items);
-  const dispatch = useDispatch(cartSlice);
+  const dispatch = useDispatch();
   const [createOrder, {data, error, isLoading}] = useCreateOrderMutation();
   const subTotal = useSelector(selectSubtotal);
   const deliveryFee = useSelector(selectDeliveryPrice);

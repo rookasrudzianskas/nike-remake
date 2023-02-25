@@ -25,6 +25,9 @@ export const cartSlice = createSlice({
       if(cartItem) cartItem.quantity += amount;
       if(cartItem.quantity === 0) state.items = state.items.filter(item => item.product._id !== productId);
     },
+    clearShoppingCart: (state, action) => {
+      state.items = [];
+    },
     removeCartItem: (state, action) => {
 
     }
