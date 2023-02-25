@@ -13,25 +13,9 @@ const ProductScreen = () => {
   const dispatch = useDispatch();
   const  numberOfItems = useSelector(selectNumberOfItems);
   const { data, error, isLoading } = useGetProductsQuery();
-
-  if(isLoading) {
-    return (
-      <View className="h-screen w-screen flex items-center justify-center">
-        <ActivityIndicator />
-      </View>
-    )
-  }
-
-  if (error) {
-    return (
-      <View className="h-screen w-screen items-center justify-center">
-        <Text className="text-red-500 font-[500] text-lg">{error}</Text>
-      </View>
-    );
-  }
-
+  if(isLoading) {return (<View className="h-screen w-screen flex items-center justify-center"><ActivityIndicator /></View>)}
+  if (error) { return (<View className="h-screen w-screen items-center justify-center"><Text className="text-red-500 font-[500] text-lg">{error}</Text></View>)}
   const products = data.data;
-
   return (
     <View className="flex flex-col">
       <View className="flex flex-row items-center  pt-16 justify-between  px-3 mb-2">
