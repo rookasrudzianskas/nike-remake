@@ -5,7 +5,7 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  ActivityIndicator,
+  ActivityIndicator, ScrollView,
 } from 'react-native';
 import {useGetOrderQuery} from "../../store/apiSlice";
 
@@ -14,7 +14,7 @@ const TrackOrderScreen = () => {
   const { data, isLoading, error } = useGetOrderQuery(ref);
 
   return (
-    <View className="pt-16" style={styles.root}>
+    <ScrollView contentContainerStyle={{paddingBottom: 100}} showsVerticalScrollIndicator={false} className="pt-16" style={styles.root}>
       <TextInput
         style={styles.input}
         value={ref}
@@ -23,11 +23,11 @@ const TrackOrderScreen = () => {
       />
 
       {isLoading && <ActivityIndicator />}
-      {data?.status !== 'OK' && <Text>Order not found</Text>}
+      {data?.status !== 'OK' && <Text className="mt-4">Order not found</Text>}
       {data?.status === 'OK' && (
-        <Text>{JSON.stringify(data.data, null, 2)}</Text>
+        <Text className="mt-3">{JSON.stringify(data.data, null, 2)}</Text>
       )}
-    </View>
+    </ScrollView>
   );
 };
 
