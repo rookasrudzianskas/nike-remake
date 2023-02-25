@@ -1,17 +1,28 @@
 //@ts-nocheck
 import React from 'react';
-import {Text, View, Image, FlatList, TouchableOpacity} from 'react-native';
+import {Text, View, Image, FlatList, TouchableOpacity, ActivityIndicator} from 'react-native';
 import {Feather, Ionicons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
 import {useDispatch, useSelector} from "react-redux";
 import {productsSlice} from "../../store/productsSlide";
 import {selectNumberOfItems} from "../../store/cartSlice";
+import {useGetProductsQuery} from "../../store/apiSlice";
 
 const ProductScreen = () => {
   const navigation = useNavigation();
-  const products = useSelector(state => state.products.products);
   const dispatch = useDispatch();
   const  numberOfItems = useSelector(selectNumberOfItems);
+  const { data, error, isLoading } = useGetProductsQuery();
+
+  if(isLoading) {
+    return (
+      <View className="h-screen w-screen flex items-center justify-center">
+        <ActivityIndicator />
+      </View>
+    )
+  }
+  const products = data.data;
+
   return (
     <View className="flex flex-col">
       <View className="flex flex-row items-center  pt-16 justify-between  px-3 mb-2">
