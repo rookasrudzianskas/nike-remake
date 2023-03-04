@@ -9,7 +9,9 @@ export default function App() {
   return (
     <Provider store={store}>
       <View className="flex-1">
-        <Navigation />
+        <StripeProvider publishableKey="pk_test_51Mhe9RE3buS2eF5kcGHk0xjSxiIKh4V0BHcxFG8dlfunkOXqHZUhICZ1YrUPgYQnMApd8jI8n9eHRoH4hmCHm1i700Db9OW7SA">
+          <Navigation />
+        </StripeProvider>
         <StatusBar style="auto" />
       </View>
     </Provider>

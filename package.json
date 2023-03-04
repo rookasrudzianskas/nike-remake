@@ -13,6 +13,7 @@
     "@react-navigation/native": "^6.1.4",
     "@react-navigation/native-stack": "^6.9.10",
     "@reduxjs/toolkit": "^1.9.2",
+    "@stripe/stripe-react-native": "0.19.0",
     "expo": "~47.0.12",
     "expo-status-bar": "~1.4.2",
     "nativewind": "^2.0.11",
